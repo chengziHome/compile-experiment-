@@ -77,7 +77,20 @@ public class Token {
             this.no = no;
         }
 
+        @Override
+        public String toString() {
+            return "TokenKind{" +
+                    "name='" + name + '\'' +
+                    ", no=" + no +
+                    '}';
+        }
     }
 
-
+    @Override
+    public String toString() {
+        return "Token{" +
+                "symbol='" + symbol + '\'' +
+                ", tokenKind=" + tokenKind.toString() +
+                '}';
+    }
 }

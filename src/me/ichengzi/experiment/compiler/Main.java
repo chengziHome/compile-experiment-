@@ -1,6 +1,7 @@
 package me.ichengzi.experiment.compiler;
 
 import java.io.*;
+import java.lang.reflect.Parameter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -71,6 +72,13 @@ public class Main {
                     errWriter.write("line"+error.getLine()+":"+error.getMsg()+"\n");
                 }
             }
+
+
+            //测试语法分析器
+            Parser parser = new Parser(tokenList);
+            parser.parse();
+            System.out.println("size:"+tokenList.size());
+
         } catch (IOException e) {
             e.printStackTrace();
         }finally {

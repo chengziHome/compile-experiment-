@@ -27,9 +27,10 @@ public class Tokenizer {
 
 
     public Token readToken(){
-        reader.sp = 0;
-        char ch = reader.ch;
+
         while(true){
+            reader.sp = 0;
+            char ch = reader.ch;
             switch (ch){
                 /*
                     要识别的类型依次是:
@@ -40,7 +41,7 @@ public class Tokenizer {
                  */
                 case ' ':case '\t':
                     processWhiteSpace();
-                    break;
+                    continue;
 
                 case 'A':case 'B':case 'C':case 'D':case 'E':case 'F':case 'G':
                 case 'H':case 'I':case 'J':case 'K':case 'L':case 'M':case 'N':
@@ -90,6 +91,7 @@ public class Tokenizer {
                 case ':':
                     reader.scanChar();
                     char letter2 = reader.ch;
+                    reader.scanChar();
                     if(letter2=='='){
                         return new Token(":=", Token.TokenKind.ASSIGNMENT);
                     }else{
@@ -174,7 +176,6 @@ public class Tokenizer {
         loop:
         do {
             reader.putChar();
-            reader.scanChar();
             char ch = reader.ch;
             switch (ch){
                 case '1':case '2':case '3':case '4':case '5':
